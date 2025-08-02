@@ -1,0 +1,4 @@
+この記事で使われているワークフローを試すリポジトリ
+https://qiita.com/nokonoko_1203/items/8bafb6033409aadccd9f
+
+「Railsでシンプルな掲示板サービスを作って」と依頼してみた結果
