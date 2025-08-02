@@ -1,0 +1,19 @@
+<div class="bg-white rounded-lg p-4 border border-gray-200">
+  <h4 class="text-md font-semibold text-gray-800 mb-4">返信を投稿</h4>
+  
+  <%= form_with(local: true, url: post_replies_path(post_id), scope: :reply, class: "space-y-4") do |f| %>
+    <div>
+      <%= f.label :content, "返信内容", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= f.text_area :content, value: form.content, rows: 4, class: "form-textarea w-full", placeholder: "返信内容を入力してください" %>
+    </div>
+
+    <div>
+      <%= f.label :author_name, "名前", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= f.text_field :author_name, value: form.author_name, class: "form-input w-full", placeholder: "あなたの名前を入力してください" %>
+    </div>
+
+    <div class="flex justify-end">
+      <%= f.submit "返信する", class: "btn-primary" %>
+    </div>
+  <% end %>
+</div>

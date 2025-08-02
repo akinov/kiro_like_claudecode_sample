@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Bulletin Board App" %></title>
+    <title><%= content_for(:title) || "掲示板" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -22,8 +22,40 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-50 min-h-screen">
+    <!-- ナビゲーションバー -->
+    <nav class="bg-white shadow-sm border-b">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-xl font-bold text-gray-800">
+            <%= link_to "掲示板", root_path, class: "hover:text-blue-600" %>
+          </h1>
+          <div>
+            <%= link_to "新規投稿", new_post_path, class: "btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- フラッシュメッセージ -->
+    <% if notice %>
+      <div class="container mx-auto px-4 mt-4">
+        <div class="alert-success">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="container mx-auto px-4 mt-4">
+        <div class="alert-error">
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- メインコンテンツ -->
+    <main class="container mx-auto px-4 py-8">
       <%= yield %>
     </main>
   </body>

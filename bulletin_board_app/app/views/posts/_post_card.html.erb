@@ -1,0 +1,18 @@
+<div class="post-card">
+  <div class="flex justify-between items-start mb-3">
+    <h3 class="text-lg font-semibold text-gray-800">
+      <%= link_to post.title, post_path(post.id), class: "hover:text-blue-600" %>
+    </h3>
+    <span class="text-sm text-gray-500"><%= post.formatted_created_at %></span>
+  </div>
+  
+  <p class="text-gray-600 mb-3 leading-relaxed"><%= post.summary %></p>
+  
+  <div class="flex justify-between items-center text-sm text-gray-500">
+    <span>投稿者: <%= post.author_name %></span>
+    <div class="flex items-center space-x-4">
+      <span><%= post.reply_count %>件の返信</span>
+      <%= link_to "詳細を見る", post_path(post.id), class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+  </div>
+</div>

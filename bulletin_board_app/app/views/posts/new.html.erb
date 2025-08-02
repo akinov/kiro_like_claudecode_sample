@@ -1,0 +1,43 @@
+<% content_for(:title, "新規投稿 - 掲示板") %>
+
+<div class="max-w-2xl mx-auto">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">新規投稿</h2>
+  
+  <%= form_with(local: true, url: posts_path, scope: :post, class: "space-y-6") do |form| %>
+    <% if @post_form.has_errors? %>
+      <div class="alert-error">
+        <ul class="list-disc list-inside">
+          <% @post_form.errors_for(:title).each do |error| %>
+            <li>タイトル: <%= error %></li>
+          <% end %>
+          <% @post_form.errors_for(:content).each do |error| %>
+            <li>本文: <%= error %></li>
+          <% end %>
+          <% @post_form.errors_for(:author_name).each do |error| %>
+            <li>投稿者名: <%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :title, "タイトル", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= form.text_field :title, value: @post_form.title, class: "form-input w-full", placeholder: "投稿のタイトルを入力してください" %>
+    </div>
+
+    <div>
+      <%= form.label :content, "本文", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= form.text_area :content, value: @post_form.content, rows: 8, class: "form-textarea w-full", placeholder: "投稿の内容を入力してください" %>
+    </div>
+
+    <div>
+      <%= form.label :author_name, "投稿者名", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= form.text_field :author_name, value: @post_form.author_name, class: "form-input w-full", placeholder: "あなたの名前を入力してください" %>
+    </div>
+
+    <div class="flex justify-between">
+      <%= link_to "キャンセル", root_path, class: "btn-secondary" %>
+      <%= form.submit "投稿する", class: "btn-primary" %>
+    </div>
+  <% end %>
+</div>
